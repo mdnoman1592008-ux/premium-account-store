@@ -1,30 +1,36 @@
 const InventoryAccount =
 require("../models/InventoryAccount");
 
-exports.getStock =
-async (
-  appName,
-  planName,
-  duration
-)=>{
+exports.stockSummary =
+async ()=>{
 
-  const count =
+  const available =
   await InventoryAccount.count({
 
     where:{
-
-      appName,
-
-      planName,
-
-      duration,
-
-      status:
-      "available"
-
+      status:"available"
     }
 
   });
 
-  return count;
+  const assigned =
+  await InventoryAccount.count({
+
+    where:{
+      status:"assigned"
+    }
+
+  });
+
+  return {
+
+    available,
+
+    assigned,
+
+    total:
+    available +
+    assigned
+
+  };
 };
