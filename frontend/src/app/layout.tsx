@@ -2,12 +2,11 @@ import "./globals.css";
 
 export const metadata = {
   title: "Premium Account Store",
-  description:
-    "Premium Apps & Subscription Store"
+  description: "Premium Subscription Store"
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
