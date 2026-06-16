@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: premium_store_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: premium_account_store
+    ports:
+      - "3306:3306"
+
+  backend:
+    build: ./backend
+    container_name: premium_store_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+
+  frontend:
+    build: ./frontend
+    container_name: premium_store_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+
+  admin:
+    build: ./admin-panel
+    container_name: premium_store_admin
+    restart: always
+    ports:
+      - "3001:3000"
