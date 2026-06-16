@@ -6,7 +6,7 @@ async (req,res)=>{
 
   try{
 
-    const exists =
+    const duplicate =
     await Payment.findOne({
       where:{
         transactionId:
@@ -14,12 +14,12 @@ async (req,res)=>{
       }
     });
 
-    if(exists){
+    if(duplicate){
 
       return res.status(400).json({
         success:false,
         message:
-        "Transaction ID already used"
+        "Transaction ID already exists"
       });
 
     }
@@ -27,10 +27,28 @@ async (req,res)=>{
     const payment =
     await Payment.create({
 
-      ...req.body,
+      userId:
+      req.user.id,
+
+      orderId:
+      req.body.orderId,
+
+      paymentMethod:
+      req.body.paymentMethod,
+
+      senderNumber:
+      req.body.senderNumber,
+
+      transactionId:
+      req.body.transactionId,
+
+      amount:
+      req.body.amount,
 
       screenshot:
-      req.file?.filename
+      req.file
+      ? req.file.filename
+      : null
 
     });
 
