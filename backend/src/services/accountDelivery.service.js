@@ -1,6 +1,9 @@
 const InventoryAccount =
 require("../models/InventoryAccount");
 
+const DeliveredAccount =
+require("../models/DeliveredAccount");
+
 const Order =
 require("../models/Order");
 
@@ -8,7 +11,8 @@ exports.assignAccount =
 async (
   appName,
   planName,
-  orderId
+  orderId,
+  userId
 )=>{
 
   const account =
@@ -21,7 +25,9 @@ async (
   });
 
   if(!account){
-    return null;
+    throw new Error(
+      "Out Of Stock"
+    );
   }
 
   account.status =
@@ -29,16 +35,24 @@ async (
 
   await account.save();
 
-  const order =
-  await Order.findByPk(orderId);
+  await DeliveredAccount.create({
 
-  order.accountEmail =
-  account.email;
+    userId,
+    orderId,
 
-  order.accountPassword =
-  account.password;
+    appName,
+    planName,
 
-  await order.save();
+    email:
+    account.email,
+
+    password:
+    account.password,
+
+    notes:
+    account.notes
+
+  });
 
   return account;
 };
