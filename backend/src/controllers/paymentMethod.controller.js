@@ -4,47 +4,23 @@ require("../models/PaymentMethod");
 exports.getMethods =
 async (req,res)=>{
 
-  try {
+  const methods =
+  await PaymentMethod.findAll();
 
-    const methods =
-    await PaymentMethod.findAll();
-
-    res.json({
-      success:true,
-      data:methods
-    });
-
-  } catch (error) {
-
-    res.status(500).json({
-      success:false,
-      message:error.message
-    });
-
-  }
+  res.json(methods);
 };
 
-exports.createMethod =
+exports.updateMethod =
 async (req,res)=>{
 
-  try {
+  const method =
+  await PaymentMethod.findByPk(
+    req.params.id
+  );
 
-    const method =
-    await PaymentMethod.create(
-      req.body
-    );
+  await method.update(
+    req.body
+  );
 
-    res.status(201).json({
-      success:true,
-      data:method
-    });
-
-  } catch (error) {
-
-    res.status(500).json({
-      success:false,
-      message:error.message
-    });
-
-  }
+  res.json(method);
 };
