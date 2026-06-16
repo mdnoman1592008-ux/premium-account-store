@@ -1,23 +1,33 @@
-const User = require("./User");
-const Admin = require("./Admin");
-const App = require("./App");
-const Plan = require("./Plan");
-const Duration = require("./Duration");
-const Order = require("./Order");
-const Payment = require("./Payment");
-const PaymentMethod = require("./PaymentMethod");
-const InventoryAccount = require("./InventoryAccount");
-const Settings = require("./Settings");
-
 module.exports = {
-  User,
-  Admin,
-  App,
-  Plan,
-  Duration,
-  Order,
-  Payment,
-  PaymentMethod,
-  InventoryAccount,
-  Settings
+
+  User:
+  require("./User"),
+
+  Order:
+  require("./Order"),
+
+  Payment:
+  require("./Payment"),
+
+  App:
+  require("./App"),
+
+  Plan:
+  require("./Plan"),
+
+  InventoryAccount:
+  require("./InventoryAccount"),
+
+  DeliveredAccount:
+  require("./DeliveredAccount"),
+
+  Notification:
+  require("./Notification"),
+
+  Review:
+  require("./Review"),
+
+  Coupon:
+  require("./Coupon")
+
 };
