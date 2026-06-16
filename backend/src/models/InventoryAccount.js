@@ -1,51 +1,64 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db");
+const { DataTypes } =
+require("sequelize");
 
-const InventoryAccount = sequelize.define(
+const {
+  sequelize
+} = require("../config/db");
+
+const InventoryAccount =
+sequelize.define(
   "InventoryAccount",
   {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+
+    id:{
+      type:DataTypes.INTEGER,
+      autoIncrement:true,
+      primaryKey:true
     },
 
-    appName: {
-      type: DataTypes.STRING,
-      allowNull: false
+    appName:{
+      type:DataTypes.STRING,
+      allowNull:false
     },
 
-    planName: {
-      type: DataTypes.STRING,
-      allowNull: false
+    planName:{
+      type:DataTypes.STRING,
+      allowNull:false
     },
 
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false
+    duration:{
+      type:DataTypes.STRING,
+      allowNull:false
     },
 
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
+    email:{
+      type:DataTypes.STRING,
+      allowNull:false
     },
 
-    notes: {
-      type: DataTypes.TEXT
+    password:{
+      type:DataTypes.STRING,
+      allowNull:false
     },
 
-    status: {
-      type: DataTypes.ENUM(
+    notes:{
+      type:DataTypes.TEXT
+    },
+
+    status:{
+      type:DataTypes.ENUM(
         "available",
-        "assigned",
-        "delivered"
+        "assigned"
       ),
-      defaultValue: "available"
+      defaultValue:
+      "available"
     }
+
   },
   {
-    timestamps: true
+    timestamps:true
   }
 );
 
-module.exports = InventoryAccount;
+module.exports =
+InventoryAccount;
