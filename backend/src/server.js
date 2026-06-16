@@ -1,52 +1,63 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
+require("dotenv").config();
 
-const { connectDB } = require("./config/db");
+const express =
+require("express");
 
-const authRoutes = require("./routes/auth.routes");
-const appRoutes = require("./routes/app.routes");
-const planRoutes = require("./routes/plan.routes");
-const orderRoutes = require("./routes/order.routes");
-const paymentRoutes = require("./routes/payment.routes");
-const adminRoutes = require("./routes/admin.routes");
+const cors =
+require("cors");
 
-dotenv.config();
-
-const app = express();
-
-connectDB();
+const app =
+express();
 
 app.use(cors());
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use(
   "/uploads",
-  express.static("src/uploads")
+  express.static("uploads")
 );
 
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message:
-      "Premium Account Store API Running"
-  });
-});
+app.use(
+  "/api/auth",
+  require("./routes/auth.routes")
+);
 
-app.use("/api/auth", authRoutes);
-app.use("/api/apps", appRoutes);
-app.use("/api/plans", planRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/payments", paymentRoutes);
-app.use("/api/admin", adminRoutes);
+app.use(
+  "/api/orders",
+  require("./routes/order.routes")
+);
 
-const PORT =
-  process.env.PORT || 5000;
+app.use(
+  "/api/payments",
+  require("./routes/payment.routes")
+);
 
-app.listen(PORT, () => {
-  console.log(
-    `Server running on port ${PORT}`
-  );
-});
+app.use(
+  "/api/accounts",
+  require("./routes/account.routes")
+);
+
+app.use(
+  "/api/admin-delivery",
+  require("./routes/adminDelivery.routes")
+);
+
+app.use(
+  "/api/reviews",
+  require("./routes/review.routes")
+);
+
+app.use(
+  "/api/coupons",
+  require("./routes/coupon.routes")
+);
+
+app.listen(
+  process.env.PORT || 5000,
+  ()=>{
+    console.log(
+      "Server Running"
+    );
+  }
+);
