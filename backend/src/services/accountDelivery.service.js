@@ -4,29 +4,28 @@ require("../models/InventoryAccount");
 const DeliveredAccount =
 require("../models/DeliveredAccount");
 
-const Order =
-require("../models/Order");
-
 exports.assignAccount =
-async (
+async ({
+  userId,
+  orderId,
   appName,
   planName,
-  orderId,
-  userId
-)=>{
+  duration
+}) => {
 
   const account =
   await InventoryAccount.findOne({
     where:{
       appName,
       planName,
+      duration,
       status:"available"
     }
   });
 
   if(!account){
     throw new Error(
-      "Out Of Stock"
+      "No inventory account available"
     );
   }
 
@@ -35,6 +34,7 @@ async (
 
   await account.save();
 
+  const delivered =
   await DeliveredAccount.create({
 
     userId,
@@ -42,6 +42,7 @@ async (
 
     appName,
     planName,
+    duration,
 
     email:
     account.email,
@@ -54,5 +55,5 @@ async (
 
   });
 
-  return account;
+  return delivered;
 };
