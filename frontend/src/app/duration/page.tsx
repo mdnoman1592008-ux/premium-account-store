@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function DurationPage() {
+function DurationContent() {
   const params = useSearchParams();
 
   const plan =
@@ -31,12 +32,12 @@ export default function DurationPage() {
           marginBottom: "40px",
         }}
       >
-        Select Duration
+        {plan}
       </h1>
 
       <div
         style={{
-          maxWidth: "800px",
+          maxWidth: "900px",
           margin: "0 auto",
           display: "grid",
           gap: "20px",
@@ -77,8 +78,7 @@ export default function DurationPage() {
                   padding: "12px",
                   border: "none",
                   borderRadius: "10px",
-                  background:
-                    "#d4af37",
+                  background: "#d4af37",
                   color: "#000",
                   fontWeight: "bold",
                   cursor: "pointer",
@@ -91,5 +91,13 @@ export default function DurationPage() {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function DurationPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DurationContent />
+    </Suspense>
   );
 }
