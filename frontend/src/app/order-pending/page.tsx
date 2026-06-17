@@ -49,17 +49,18 @@ function PendingContent() {
         <div
           style={{
             background: "#111",
-            border:
-              "1px solid rgba(212,175,55,.2)",
             borderRadius: "24px",
-            padding: "40px",
+            padding: "35px",
+            border:
+              "1px solid rgba(212,175,55,.25)",
             boxShadow:
-              "0 15px 50px rgba(0,0,0,.4)",
+              "0 20px 60px rgba(212,175,55,.15)",
           }}
         >
           <div
             style={{
               textAlign: "center",
+              marginBottom: "30px",
             }}
           >
             <div
@@ -90,115 +91,157 @@ function PendingContent() {
 
           <div
             style={{
-              marginTop: "35px",
-              display: "grid",
-              gap: "15px",
+              background: "#1a1a1a",
+              padding: "20px",
+              borderRadius: "16px",
+              marginBottom: "25px",
             }}
           >
-            <div
+            <h3
               style={{
-                background: "#1a1a1a",
-                padding: "15px",
-                borderRadius: "12px",
+                color: "#d4af37",
+                marginBottom: "15px",
               }}
             >
+              Order Details
+            </h3>
+
+            <p>
               <strong>Order ID:</strong>{" "}
               {orderId}
-            </div>
+            </p>
 
-            <div
-              style={{
-                background: "#1a1a1a",
-                padding: "15px",
-                borderRadius: "12px",
-              }}
-            >
+            <p>
               <strong>Plan:</strong>{" "}
               {plan}
-            </div>
+            </p>
 
-            <div
-              style={{
-                background: "#1a1a1a",
-                padding: "15px",
-                borderRadius: "12px",
-              }}
-            >
+            <p>
               <strong>Duration:</strong>{" "}
               {duration}
-            </div>
+            </p>
 
-            <div
-              style={{
-                background: "#1a1a1a",
-                padding: "15px",
-                borderRadius: "12px",
-              }}
-            >
+            <p>
               <strong>Amount:</strong> ৳
               {price}
-            </div>
+            </p>
 
-            <div
-              style={{
-                background: "#1a1a1a",
-                padding: "15px",
-                borderRadius: "12px",
-              }}
-            >
-              <strong>
-                Payment Method:
-              </strong>{" "}
+            <p>
+              <strong>Payment Method:</strong>{" "}
               {method}
-            </div>
+            </p>
 
-            <div
-              style={{
-                background: "#1a1a1a",
-                padding: "15px",
-                borderRadius: "12px",
-              }}
-            >
-              <strong>
-                Transaction ID:
-              </strong>{" "}
+            <p>
+              <strong>Transaction ID:</strong>{" "}
               {trx}
-            </div>
+            </p>
 
-            <div
-              style={{
-                background: "#1a1a1a",
-                padding: "15px",
-                borderRadius: "12px",
-              }}
-            >
-              <strong>
-                Submitted At:
-              </strong>{" "}
+            <p>
+              <strong>Submitted:</strong>{" "}
               {submitTime}
-            </div>
+            </p>
+          </div>
+
+          <div
+            style={{
+              background: "#1a1a1a",
+              padding: "20px",
+              borderRadius: "16px",
+              marginBottom: "25px",
+            }}
+          >
+            <h3
+              style={{
+                color: "#d4af37",
+                marginBottom: "20px",
+              }}
+            >
+              Order Progress
+            </h3>
 
             <div
               style={{
-                background:
-                  "rgba(245,158,11,.12)",
-                border:
-                  "1px solid rgba(245,158,11,.3)",
-                padding: "18px",
-                borderRadius: "12px",
-                color: "#f59e0b",
-                fontWeight: "bold",
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
               }}
             >
-              Status: PENDING
+              <div>
+                ✅ Payment Submitted
+              </div>
+
+              <div>
+                🔄 Pending Review
+              </div>
+
+              <div
+                style={{
+                  color: "#777",
+                }}
+              >
+                ⏳ Verified
+              </div>
+
+              <div
+                style={{
+                  color: "#777",
+                }}
+              >
+                📦 Delivered
+              </div>
             </div>
           </div>
 
           <div
             style={{
-              marginTop: "30px",
+              background:
+                "rgba(245,158,11,.12)",
+              border:
+                "1px solid rgba(245,158,11,.3)",
+              padding: "18px",
+              borderRadius: "16px",
+              color: "#f59e0b",
+              marginBottom: "25px",
             }}
           >
+            <strong>Status:</strong>{" "}
+            PENDING
+
+            <br />
+            <br />
+
+            Estimated Verification Time:
+            5-30 Minutes
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gap: "15px",
+            }}
+          >
+            <a
+              href="/contact"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <button
+                style={{
+                  width: "100%",
+                  padding: "15px",
+                  border: "none",
+                  borderRadius: "12px",
+                  background: "#1f2937",
+                  color: "#fff",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
+                Contact Support
+              </button>
+            </a>
+
             <a
               href="/my-accounts"
               style={{
