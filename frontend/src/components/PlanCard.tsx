@@ -6,9 +6,10 @@ import Link from "next/link";
 type Props = {
   title: string;
   features: string[];
+  price?: string;
 };
 
-const durationPrices = {
+const durationPrices: Record<string, number> = {
   "1 Month": 299,
   "3 Months": 799,
   "6 Months": 1499,
@@ -19,31 +20,40 @@ export default function PlanCard({
   title,
   features,
 }: Props) {
-  const [duration, setDuration] =
-    useState("1 Month");
+  const [duration, setDuration] = useState("1 Month");
 
-  const price =
-    durationPrices[
-      duration as keyof typeof durationPrices
-    ];
+  const selectedPrice =
+    durationPrices[duration];
 
   return (
-    <div className="app-card">
-      <h2>{title}</h2>
-
-      <div
+    <div
+      style={{
+        background: "#111",
+        border: "1px solid rgba(212,175,55,.2)",
+        borderRadius: "20px",
+        padding: "30px",
+        color: "#fff",
+      }}
+    >
+      <h2
         style={{
-          marginTop: "20px",
+          textAlign: "center",
+          marginBottom: "20px",
         }}
       >
-        {features.map((item, index) => (
-          <p key={index}>
-            ✓ {item}
-          </p>
-        ))}
+        {title}
+      </h2>
+
+      <div>
+        {features.map(
+          (item, index) => (
+            <p key={index}>
+              ✓ {item}
+            </p>
+          )
+        )}
       </div>
 
-      {/* Duration Selection */}
       <div
         style={{
           marginTop: "20px",
@@ -53,7 +63,6 @@ export default function PlanCard({
           style={{
             display: "block",
             marginBottom: "10px",
-            fontWeight: "bold",
           }}
         >
           Select Duration
@@ -62,32 +71,44 @@ export default function PlanCard({
         <select
           value={duration}
           onChange={(e) =>
-            setDuration(e.target.value)
+            setDuration(
+              e.target.value
+            )
           }
           style={{
             width: "100%",
             padding: "12px",
             borderRadius: "10px",
-            border: "1px solid #444",
-            background: "#111",
+            background: "#1a1a1a",
             color: "#fff",
+            border:
+              "1px solid #333",
           }}
         >
-          <option>1 Month</option>
-          <option>3 Months</option>
-          <option>6 Months</option>
-          <option>12 Months</option>
+          <option>
+            1 Month
+          </option>
+          <option>
+            3 Months
+          </option>
+          <option>
+            6 Months
+          </option>
+          <option>
+            12 Months
+          </option>
         </select>
       </div>
 
       <h3
         style={{
           marginTop: "20px",
+          textAlign: "center",
           color: "#d4af37",
           fontSize: "28px",
         }}
       >
-        ৳{price}
+        ৳{selectedPrice}
       </h3>
 
       <Link
@@ -95,7 +116,7 @@ export default function PlanCard({
           title
         )}&duration=${encodeURIComponent(
           duration
-        )}&price=${price}`}
+        )}&price=${selectedPrice}`}
         style={{
           textDecoration: "none",
         }}
@@ -111,7 +132,6 @@ export default function PlanCard({
               "linear-gradient(135deg,#d4af37,#f5d76e)",
             color: "#000",
             fontWeight: "bold",
-            fontSize: "16px",
             cursor: "pointer",
           }}
         >
