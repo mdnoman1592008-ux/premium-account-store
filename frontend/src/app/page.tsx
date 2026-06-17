@@ -1,3 +1,4 @@
+```tsx
 import Link from "next/link";
 import FeaturedApps from "../components/FeaturedApps";
 
@@ -9,15 +10,15 @@ export default function HomePage() {
         style={{
           maxWidth: "1400px",
           margin: "0 auto",
-          padding: "80px 40px",
+          padding: "60px 40px 80px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: "60px",
+          gap: "50px",
           flexWrap: "wrap",
         }}
       >
-        {/* LEFT */}
+        {/* LEFT SIDE */}
         <div
           style={{
             flex: 1,
@@ -26,13 +27,15 @@ export default function HomePage() {
         >
           <div
             style={{
-              display: "inline-block",
-              padding: "8px 16px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "10px 18px",
               borderRadius: "999px",
               background: "#eef4ff",
               color: "#2563eb",
               fontWeight: "bold",
-              marginBottom: "20px",
+              marginBottom: "25px",
             }}
           >
             ⭐ TRUSTED BY THOUSANDS
@@ -40,11 +43,11 @@ export default function HomePage() {
 
           <h1
             style={{
-              fontSize: "64px",
-              lineHeight: "1.1",
+              fontSize: "72px",
+              lineHeight: "1.05",
+              fontWeight: "900",
               color: "#111827",
-              marginBottom: "20px",
-              fontWeight: "800",
+              marginBottom: "24px",
             }}
           >
             Premium Accounts
@@ -61,11 +64,11 @@ export default function HomePage() {
 
           <p
             style={{
-              fontSize: "18px",
+              fontSize: "20px",
               color: "#6b7280",
               maxWidth: "600px",
-              marginBottom: "35px",
               lineHeight: "1.8",
+              marginBottom: "35px",
             }}
           >
             Get premium accounts, subscriptions and
@@ -85,13 +88,16 @@ export default function HomePage() {
             <Link href="/store">
               <button
                 style={{
-                  background: "#2563eb",
+                  background:
+                    "linear-gradient(135deg,#2563eb,#3b82f6)",
                   color: "#fff",
                   border: "none",
-                  padding: "16px 28px",
+                  padding: "16px 30px",
                   borderRadius: "14px",
                   cursor: "pointer",
                   fontWeight: "bold",
+                  boxShadow:
+                    "0 10px 30px rgba(37,99,235,.25)",
                 }}
               >
                 Explore Plans →
@@ -104,7 +110,7 @@ export default function HomePage() {
                   background: "#fff",
                   color: "#111827",
                   border: "1px solid #e5e7eb",
-                  padding: "16px 28px",
+                  padding: "16px 30px",
                   borderRadius: "14px",
                   cursor: "pointer",
                   fontWeight: "bold",
@@ -120,24 +126,28 @@ export default function HomePage() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(160px,1fr))",
+                "repeat(auto-fit,minmax(180px,1fr))",
               gap: "15px",
             }}
           >
             {[
               {
+                icon: "⚡",
                 title: "Instant Delivery",
                 sub: "Fast & Reliable",
               },
               {
+                icon: "🛡️",
                 title: "Secure Payment",
                 sub: "100% Protected",
               },
               {
+                icon: "🏷️",
                 title: "Affordable Price",
                 sub: "Best Market Price",
               },
               {
+                icon: "🎧",
                 title: "24/7 Support",
                 sub: "Always Here",
               },
@@ -147,16 +157,25 @@ export default function HomePage() {
                 style={{
                   background: "#fff",
                   border: "1px solid #e5e7eb",
-                  borderRadius: "18px",
-                  padding: "18px",
+                  borderRadius: "20px",
+                  padding: "20px",
                   boxShadow:
-                    "0 5px 15px rgba(0,0,0,.05)",
+                    "0 5px 20px rgba(0,0,0,.05)",
                 }}
               >
+                <div
+                  style={{
+                    fontSize: "28px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  {item.icon}
+                </div>
+
                 <h4
                   style={{
                     color: "#111827",
-                    marginBottom: "6px",
+                    marginBottom: "5px",
                   }}
                 >
                   {item.title}
@@ -188,7 +207,10 @@ export default function HomePage() {
             alt="Premium Account Store"
             style={{
               width: "100%",
-              maxWidth: "650px",
+              maxWidth: "720px",
+              height: "auto",
+              filter:
+                "drop-shadow(0 20px 40px rgba(37,99,235,.2))",
             }}
           />
         </div>
@@ -204,7 +226,7 @@ export default function HomePage() {
       >
         <h2
           style={{
-            fontSize: "36px",
+            fontSize: "40px",
             color: "#111827",
             marginBottom: "30px",
           }}
@@ -219,7 +241,7 @@ export default function HomePage() {
       <section
         style={{
           padding: "80px 40px",
-          background: "#ffffff",
+          background: "#f8fafc",
         }}
       >
         <div
@@ -242,16 +264,18 @@ export default function HomePage() {
               key={number}
               style={{
                 background: "#fff",
-                border: "1px solid #e5e7eb",
                 borderRadius: "20px",
                 padding: "30px",
                 textAlign: "center",
+                boxShadow:
+                  "0 10px 25px rgba(0,0,0,.05)",
               }}
             >
               <h2
                 style={{
                   color: "#2563eb",
                   fontSize: "42px",
+                  marginBottom: "10px",
                 }}
               >
                 {number}
@@ -268,67 +292,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* NEWSLETTER */}
-      <section
-        style={{
-          maxWidth: "1200px",
-          margin: "80px auto",
-          padding: "50px",
-          background: "#fff",
-          borderRadius: "30px",
-          border: "1px solid #e5e7eb",
-          textAlign: "center",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "36px",
-            color: "#111827",
-            marginBottom: "15px",
-          }}
-        >
-          Stay Updated
-        </h2>
-
-        <p
-          style={{
-            color: "#6b7280",
-            marginBottom: "25px",
-          }}
-        >
-          Subscribe to receive offers and updates.
-        </p>
-
-        <input
-          type="email"
-          placeholder="Enter Email"
-          style={{
-            width: "100%",
-            maxWidth: "500px",
-            padding: "15px",
-            borderRadius: "12px",
-            border: "1px solid #d1d5db",
-            marginBottom: "15px",
-          }}
-        />
-
-        <br />
-
-        <button
-          style={{
-            background: "#2563eb",
-            color: "#fff",
-            border: "none",
-            padding: "15px 40px",
-            borderRadius: "12px",
-            cursor: "pointer",
-            fontWeight: "bold",
-          }}
-        >
-          Subscribe
-        </button>
-      </section>
     </main>
   );
 }
+```
