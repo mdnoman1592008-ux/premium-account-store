@@ -35,7 +35,6 @@ export default function FeaturedApps() {
           <AppCard
   key={app}
   name={app}
-  slug={app.toLowerCase()}
 />
         ))}
 
