@@ -1,25 +1,24 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
-    <nav className="navbar">
+    <nav
+      style={{
+        display: "flex",
+        gap: "20px",
+        padding: "20px",
+        background: "#000",
+      }}
+    >
+      <Link href="/">Home</Link>
 
-      <div className="logo">
-        Premium Account Store
-      </div>
+      <Link href="/store">Store</Link>
 
-      <ul>
+      <Link href="/orders">My Orders</Link>
 
-        <li>Home</li>
+      <Link href="/contact">Contact</Link>
 
-        <li>Store</li>
-
-        <li>My Orders</li>
-
-        <li>Contact</li>
-
-        <li>Login</li>
-
-      </ul>
-
+      <Link href="/login">Login</Link>
     </nav>
   );
 }
