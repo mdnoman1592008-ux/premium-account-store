@@ -1,74 +1,92 @@
-```tsx
 import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav
+    <header
       style={{
         position: "sticky",
         top: 0,
         zIndex: 999,
-        background: "rgba(0,0,0,.95)",
-        backdropFilter: "blur(12px)",
+        backdropFilter: "blur(20px)",
+        background: "rgba(0,0,0,.85)",
         borderBottom: "1px solid rgba(212,175,55,.15)",
-        padding: "14px 30px",
       }}
     >
       <div
         style={{
           maxWidth: "1400px",
           margin: "0 auto",
+          padding: "16px 24px",
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
-        {/* Left Side */}
-        <div
+        {/* Logo Section */}
+        <Link
+          href="/"
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "14px",
+            textDecoration: "none",
           }}
         >
           <div
             style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "50%",
-              background:
-                "linear-gradient(135deg,#d4af37,#f5d76e)",
               display: "flex",
-              justifyContent: "center",
               alignItems: "center",
-              color: "#000",
-              fontWeight: "bold",
-              fontSize: "20px",
-              boxShadow:
-                "0 0 20px rgba(212,175,55,.4)",
+              gap: "14px",
             }}
           >
-            P
+            <div
+              style={{
+                width: "52px",
+                height: "52px",
+                borderRadius: "50%",
+                background:
+                  "linear-gradient(135deg,#d4af37,#f5d76e)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontWeight: "bold",
+                fontSize: "22px",
+                color: "#000",
+                boxShadow:
+                  "0 0 25px rgba(212,175,55,.45)",
+              }}
+            >
+              P
+            </div>
+
+            <div>
+              <h2
+                style={{
+                  margin: 0,
+                  color: "#d4af37",
+                  fontSize: "30px",
+                  fontWeight: 800,
+                }}
+              >
+                Premium Account Store
+              </h2>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#888",
+                  fontSize: "12px",
+                }}
+              >
+                Premium Digital Accounts
+              </p>
+            </div>
           </div>
+        </Link>
 
-          <h2
-            style={{
-              color: "#d4af37",
-              margin: 0,
-              fontSize: "32px",
-              fontWeight: "800",
-            }}
-          >
-            Premium Account Store
-          </h2>
-        </div>
-
-        {/* Right Side */}
-        <div
+        {/* Menu */}
+        <nav
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "30px",
+            gap: "28px",
           }}
         >
           <Link
@@ -76,6 +94,7 @@ export default function Navbar() {
             style={{
               color: "#fff",
               textDecoration: "none",
+              fontWeight: 500,
             }}
           >
             Home
@@ -86,6 +105,7 @@ export default function Navbar() {
             style={{
               color: "#fff",
               textDecoration: "none",
+              fontWeight: 500,
             }}
           >
             Store
@@ -96,6 +116,7 @@ export default function Navbar() {
             style={{
               color: "#fff",
               textDecoration: "none",
+              fontWeight: 500,
             }}
           >
             My Orders
@@ -106,46 +127,70 @@ export default function Navbar() {
             style={{
               color: "#fff",
               textDecoration: "none",
+              fontWeight: 500,
             }}
           >
             Contact
           </Link>
 
           <Link
-            href="/login"
+            href="/signup"
             style={{
-              padding: "10px 24px",
-              borderRadius: "12px",
-              background:
-                "linear-gradient(135deg,#d4af37,#f5d76e)",
-              color: "#000",
+              color: "#fff",
               textDecoration: "none",
-              fontWeight: "bold",
+              fontWeight: 500,
             }}
           >
-            Login
+            Sign Up
           </Link>
 
+          <Link
+            href="/login"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <button
+              style={{
+                border: "none",
+                padding: "12px 24px",
+                borderRadius: "14px",
+                background:
+                  "linear-gradient(135deg,#d4af37,#f5d76e)",
+                color: "#000",
+                fontWeight: "bold",
+                cursor: "pointer",
+                boxShadow:
+                  "0 10px 25px rgba(212,175,55,.35)",
+              }}
+            >
+              Login
+            </button>
+          </Link>
+
+          {/* Profile Avatar */}
           <div
             style={{
-              width: "42px",
-              height: "42px",
+              width: "46px",
+              height: "46px",
               borderRadius: "50%",
               background:
                 "linear-gradient(135deg,#d4af37,#f5d76e)",
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
+              alignItems: "center",
               color: "#000",
               fontWeight: "bold",
+              fontSize: "18px",
               cursor: "pointer",
+              boxShadow:
+                "0 0 20px rgba(212,175,55,.4)",
             }}
           >
             P
           </div>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }
-```
