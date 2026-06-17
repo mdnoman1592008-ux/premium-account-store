@@ -109,6 +109,34 @@ export default function Navbar() {
         </Link>
 
         <Link
+  href="/register"
+  style={{
+    textDecoration: "none",
+  }}
+>
+  <button
+    style={{
+      background: "transparent",
+      color: "#d4af37",
+
+      border: "1px solid #d4af37",
+
+      padding: "10px 22px",
+
+      borderRadius: "12px",
+
+      cursor: "pointer",
+
+      fontWeight: "600",
+
+      transition: ".3s",
+    }}
+  >
+    Sign Up
+  </button>
+</Link>
+
+        <Link
           href="/login"
           style={{
             textDecoration: "none",
