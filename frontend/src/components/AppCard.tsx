@@ -1,17 +1,16 @@
+```tsx
 import Link from "next/link";
 
 type Props = {
   name: string;
   image?: string;
-  price?: string;
   stock?: string;
 };
 
 export default function AppCard({
   name,
   image,
-  price = "Starting ৳299",
-  stock = "In Stock",
+  stock = "Available",
 }: Props) {
   const slug = name
     .toLowerCase()
@@ -21,33 +20,36 @@ export default function AppCard({
     <div
       style={{
         background:
-          "linear-gradient(145deg,#0f0f0f,#181818)",
+          "rgba(255,255,255,.75)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter:
+          "blur(18px)",
         border:
-          "1px solid rgba(212,175,55,.15)",
-        borderRadius: "24px",
+          "1px solid rgba(255,255,255,.45)",
+        borderRadius: "28px",
         overflow: "hidden",
         position: "relative",
         transition: "all .3s ease",
         boxShadow:
-          "0 15px 40px rgba(0,0,0,.35)",
+          "0 20px 40px rgba(0,0,0,.08)",
       }}
     >
-      {/* Gold Glow */}
+      {/* Blue Glow */}
       <div
         style={{
           position: "absolute",
-          top: "-50px",
-          right: "-50px",
-          width: "120px",
-          height: "120px",
+          top: "-60px",
+          right: "-60px",
+          width: "150px",
+          height: "150px",
           borderRadius: "50%",
           background:
-            "rgba(212,175,55,.12)",
-          filter: "blur(40px)",
+            "rgba(37,99,235,.12)",
+          filter: "blur(50px)",
         }}
       />
 
-      {/* Image */}
+      {/* App Image */}
       <div
         style={{
           paddingTop: "30px",
@@ -59,28 +61,29 @@ export default function AppCard({
             src={image}
             alt={name}
             style={{
-              width: "90px",
-              height: "90px",
+              width: "95px",
+              height: "95px",
               objectFit: "contain",
+              transition: ".3s",
             }}
           />
         ) : (
           <div
             style={{
-              width: "90px",
-              height: "90px",
+              width: "95px",
+              height: "95px",
               margin: "0 auto",
               borderRadius: "50%",
               background:
-                "linear-gradient(135deg,#d4af37,#f5d76e)",
+                "linear-gradient(135deg,#2563eb,#60a5fa)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#000",
-              fontSize: "32px",
+              color: "#fff",
+              fontSize: "34px",
               fontWeight: "bold",
               boxShadow:
-                "0 0 25px rgba(212,175,55,.35)",
+                "0 10px 30px rgba(37,99,235,.25)",
             }}
           >
             {name.charAt(0)}
@@ -91,16 +94,16 @@ export default function AppCard({
       {/* Content */}
       <div
         style={{
-          padding: "20px",
+          padding: "22px",
           textAlign: "center",
-          color: "#fff",
         }}
       >
         <h3
           style={{
             margin: 0,
             fontSize: "24px",
-            fontWeight: 700,
+            color: "#111827",
+            fontWeight: 800,
           }}
         >
           {name}
@@ -118,7 +121,7 @@ export default function AppCard({
 
         <p
           style={{
-            color: "#9ca3af",
+            color: "#6b7280",
             marginTop: "10px",
             fontSize: "14px",
           }}
@@ -130,27 +133,16 @@ export default function AppCard({
           style={{
             display: "inline-block",
             marginTop: "12px",
-            padding: "6px 14px",
+            padding: "7px 14px",
             borderRadius: "999px",
             background:
-              "rgba(34,197,94,.15)",
-            color: "#22c55e",
+              "rgba(34,197,94,.12)",
+            color: "#16a34a",
             fontSize: "13px",
             fontWeight: "bold",
           }}
         >
           ✓ {stock}
-        </div>
-
-        <div
-          style={{
-            marginTop: "16px",
-            color: "#d4af37",
-            fontSize: "18px",
-            fontWeight: "bold",
-          }}
-        >
-          {price}
         </div>
 
         <Link
@@ -162,24 +154,25 @@ export default function AppCard({
           <button
             style={{
               width: "100%",
-              marginTop: "20px",
-              padding: "14px",
+              marginTop: "22px",
+              padding: "15px",
               border: "none",
-              borderRadius: "14px",
+              borderRadius: "16px",
               background:
-                "linear-gradient(135deg,#d4af37,#f5d76e)",
-              color: "#000",
+                "linear-gradient(135deg,#2563eb,#3b82f6)",
+              color: "#fff",
               fontSize: "15px",
               fontWeight: "bold",
               cursor: "pointer",
               boxShadow:
-                "0 10px 25px rgba(212,175,55,.3)",
+                "0 10px 25px rgba(37,99,235,.25)",
             }}
           >
-            🔥 Buy Now
+            🚀 Buy Now
           </button>
         </Link>
       </div>
     </div>
   );
 }
+```
