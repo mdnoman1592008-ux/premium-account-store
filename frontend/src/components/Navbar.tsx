@@ -1,174 +1,151 @@
-"use client";
-
+```tsx
 import Link from "next/link";
 
 export default function Navbar() {
-  const navLink = {
-    color: "#fff",
-    textDecoration: "none",
-    fontSize: "15px",
-    fontWeight: 500,
-    transition: "all .3s ease",
-  };
-
   return (
     <nav
       style={{
         position: "sticky",
         top: 0,
-        zIndex: 1000,
-
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-
-        padding: "18px 40px",
-
-        background: "rgba(0,0,0,.85)",
-        backdropFilter: "blur(15px)",
-
-        borderBottom: "1px solid rgba(212,175,55,.2)",
-
-        boxShadow:
-          "0 0 25px rgba(212,175,55,.08)",
+        zIndex: 999,
+        background: "rgba(0,0,0,.95)",
+        backdropFilter: "blur(12px)",
+        borderBottom: "1px solid rgba(212,175,55,.15)",
+        padding: "14px 30px",
       }}
     >
-      {/* Logo */}
-      <Link
-        href="/"
+      <div
         style={{
-          textDecoration: "none",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
+        {/* Left Side */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "10px",
+            gap: "14px",
           }}
         >
           <div
             style={{
-              width: "38px",
-              height: "38px",
-
+              width: "48px",
+              height: "48px",
               borderRadius: "50%",
-
               background:
                 "linear-gradient(135deg,#d4af37,#f5d76e)",
-
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
-
+              alignItems: "center",
               color: "#000",
               fontWeight: "bold",
-
+              fontSize: "20px",
               boxShadow:
-                "0 0 15px rgba(212,175,55,.4)",
+                "0 0 20px rgba(212,175,55,.4)",
             }}
           >
             P
           </div>
 
-          <span
+          <h2
             style={{
-              fontSize: "22px",
-              fontWeight: "700",
               color: "#d4af37",
-              letterSpacing: ".5px",
+              margin: 0,
+              fontSize: "32px",
+              fontWeight: "800",
             }}
           >
             Premium Account Store
-          </span>
+          </h2>
         </div>
-      </Link>
 
-      {/* Menu */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "28px",
-        }}
-      >
-        <Link href="/" style={navLink}>
-          Home
-        </Link>
-
-        <Link href="/store" style={navLink}>
-          Store
-        </Link>
-
-        <Link href="/orders" style={navLink}>
-          My Orders
-        </Link>
-
-        <Link href="/contact" style={navLink}>
-          Contact
-        </Link>
-
-        <Link
-  href="/register"
-  style={{
-    textDecoration: "none",
-  }}
->
-  <button
-    style={{
-      background: "transparent",
-      color: "#d4af37",
-
-      border: "1px solid #d4af37",
-
-      padding: "10px 22px",
-
-      borderRadius: "12px",
-
-      cursor: "pointer",
-
-      fontWeight: "600",
-
-      transition: ".3s",
-    }}
-  >
-    Sign Up
-  </button>
-</Link>
-
-        <Link
-          href="/login"
+        {/* Right Side */}
+        <div
           style={{
-            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            gap: "30px",
           }}
         >
-          <button
+          <Link
+            href="/"
             style={{
+              color: "#fff",
+              textDecoration: "none",
+            }}
+          >
+            Home
+          </Link>
+
+          <Link
+            href="/store"
+            style={{
+              color: "#fff",
+              textDecoration: "none",
+            }}
+          >
+            Store
+          </Link>
+
+          <Link
+            href="/orders"
+            style={{
+              color: "#fff",
+              textDecoration: "none",
+            }}
+          >
+            My Orders
+          </Link>
+
+          <Link
+            href="/contact"
+            style={{
+              color: "#fff",
+              textDecoration: "none",
+            }}
+          >
+            Contact
+          </Link>
+
+          <Link
+            href="/login"
+            style={{
+              padding: "10px 24px",
+              borderRadius: "12px",
               background:
                 "linear-gradient(135deg,#d4af37,#f5d76e)",
-
               color: "#000",
-
-              border: "none",
-
-              padding: "10px 22px",
-
-              borderRadius: "12px",
-
-              fontWeight: "700",
-
-              cursor: "pointer",
-
-              transition: ".3s",
-
-              boxShadow:
-                "0 0 20px rgba(212,175,55,.35)",
+              textDecoration: "none",
+              fontWeight: "bold",
             }}
           >
             Login
-          </button>
-        </Link>
+          </Link>
+
+          <div
+            style={{
+              width: "42px",
+              height: "42px",
+              borderRadius: "50%",
+              background:
+                "linear-gradient(135deg,#d4af37,#f5d76e)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#000",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            P
+          </div>
+        </div>
       </div>
     </nav>
   );
 }
+```
