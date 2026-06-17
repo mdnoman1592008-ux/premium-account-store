@@ -33,9 +33,10 @@ export default function FeaturedApps() {
 
         {apps.map((app)=>(
           <AppCard
-            key={app}
-            name={app}
-          />
+  key={app}
+  name={app}
+  slug={app.toLowerCase()}
+/>
         ))}
 
       </div>
