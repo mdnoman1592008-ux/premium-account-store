@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 function PaymentCompleteContent() {
+  const params = useSearchParams();
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [transactionId, setTransactionId] =
     useState("");
@@ -23,18 +23,18 @@ function PaymentCompleteContent() {
     useState(false);
 
   const plan =
-    searchParams.get("plan") || "";
+    params.get("plan") || "";
 
   const duration =
-    searchParams.get("duration") || "";
+    params.get("duration") || "";
 
   const price =
-    searchParams.get("price") || "0";
+    params.get("price") || "0";
 
   const method =
-    searchParams.get("method") || "";
+    params.get("method") || "";
 
-  const handleFileChange = (
+  const handleImage = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file =
@@ -49,13 +49,13 @@ function PaymentCompleteContent() {
     );
   };
 
-  const handleSubmit = () => {
-    if (!senderNumber.trim()) {
+  const handleSubmit = async () => {
+    if (!senderNumber) {
       alert("Enter Sender Number");
       return;
     }
 
-    if (!transactionId.trim()) {
+    if (!transactionId) {
       alert("Enter Transaction ID");
       return;
     }
@@ -75,11 +75,9 @@ function PaymentCompleteContent() {
           plan
         )}&duration=${encodeURIComponent(
           duration
-        )}&price=${price}&method=${method}&trx=${encodeURIComponent(
-          transactionId
-        )}`
+        )}&price=${price}&method=${method}&trx=${transactionId}`
       );
-    }, 2000);
+    }, 1500);
   };
 
   return (
@@ -87,7 +85,7 @@ function PaymentCompleteContent() {
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(to bottom,#050505,#0f0f0f)",
+          "linear-gradient(to bottom,#050505,#0d0d0d)",
         color: "#fff",
         padding: "40px 20px",
       }}
@@ -100,11 +98,12 @@ function PaymentCompleteContent() {
       >
         <div
           style={{
-            background: "#111",
-            borderRadius: "24px",
+            background:
+              "linear-gradient(145deg,#111,#181818)",
+            borderRadius: "28px",
             padding: "35px",
             border:
-              "1px solid rgba(212,175,55,.25)",
+              "1px solid rgba(212,175,55,.2)",
             boxShadow:
               "0 20px 60px rgba(212,175,55,.15)",
           }}
@@ -113,17 +112,27 @@ function PaymentCompleteContent() {
             style={{
               textAlign: "center",
               color: "#d4af37",
-              marginBottom: "30px",
+              marginBottom: "10px",
             }}
           >
             Submit Payment
           </h1>
 
+          <p
+            style={{
+              textAlign: "center",
+              color: "#999",
+              marginBottom: "30px",
+            }}
+          >
+            Complete your order verification
+          </p>
+
           <div
             style={{
-              background: "#1a1a1a",
+              background: "#141414",
               padding: "20px",
-              borderRadius: "16px",
+              borderRadius: "18px",
               marginBottom: "25px",
             }}
           >
@@ -147,105 +156,98 @@ function PaymentCompleteContent() {
             </p>
 
             <p>
-              <strong>Amount:</strong> ৳
-              {price}
-            </p>
-
-            <p>
               <strong>Method:</strong>{" "}
               {method}
             </p>
+
+            <p>
+              <strong>Amount:</strong> ৳
+              {price}
+            </p>
           </div>
 
           <div
             style={{
-              marginBottom: "20px",
+              display: "grid",
+              gap: "20px",
             }}
           >
-            <label>
-              Sender Number
-            </label>
+            <div>
+              <label>
+                Sender Number
+              </label>
 
-            <input
-              type="text"
-              value={senderNumber}
-              onChange={(e) =>
-                setSenderNumber(
-                  e.target.value
-                )
-              }
-              placeholder="01XXXXXXXXX"
-              style={{
-                width: "100%",
-                padding: "14px",
-                marginTop: "8px",
-                borderRadius: "12px",
-                border:
-                  "1px solid #333",
-                background:
-                  "#1a1a1a",
-                color: "#fff",
-              }}
-            />
-          </div>
+              <input
+                type="text"
+                value={senderNumber}
+                onChange={(e) =>
+                  setSenderNumber(
+                    e.target.value
+                  )
+                }
+                placeholder="01XXXXXXXXX"
+                style={{
+                  width: "100%",
+                  marginTop: "8px",
+                  padding: "15px",
+                  borderRadius: "12px",
+                  border:
+                    "1px solid #333",
+                  background:
+                    "#0d0d0d",
+                  color: "#fff",
+                }}
+              />
+            </div>
 
-          <div
-            style={{
-              marginBottom: "20px",
-            }}
-          >
-            <label>
-              Transaction ID
-            </label>
+            <div>
+              <label>
+                Transaction ID
+              </label>
 
-            <input
-              type="text"
-              value={transactionId}
-              onChange={(e) =>
-                setTransactionId(
-                  e.target.value
-                )
-              }
-              placeholder="Transaction ID"
-              style={{
-                width: "100%",
-                padding: "14px",
-                marginTop: "8px",
-                borderRadius: "12px",
-                border:
-                  "1px solid #333",
-                background:
-                  "#1a1a1a",
-                color: "#fff",
-              }}
-            />
-          </div>
+              <input
+                type="text"
+                value={transactionId}
+                onChange={(e) =>
+                  setTransactionId(
+                    e.target.value
+                  )
+                }
+                placeholder="Enter Transaction ID"
+                style={{
+                  width: "100%",
+                  marginTop: "8px",
+                  padding: "15px",
+                  borderRadius: "12px",
+                  border:
+                    "1px solid #333",
+                  background:
+                    "#0d0d0d",
+                  color: "#fff",
+                }}
+              />
+            </div>
 
-          <div
-            style={{
-              marginBottom: "25px",
-            }}
-          >
-            <label>
-              Upload Screenshot
-            </label>
+            <div>
+              <label>
+                Upload Screenshot
+              </label>
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={
-                handleFileChange
-              }
-              style={{
-                width: "100%",
-                marginTop: "10px",
-              }}
-            />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImage}
+                style={{
+                  width: "100%",
+                  marginTop: "10px",
+                }}
+              />
+            </div>
 
             {preview && (
               <div
                 style={{
-                  marginTop: "20px",
+                  textAlign: "center",
                 }}
               >
                 <img
@@ -258,49 +260,37 @@ function PaymentCompleteContent() {
                     objectFit:
                       "contain",
                     borderRadius:
-                      "14px",
+                      "16px",
                     border:
-                      "1px solid #333",
+                      "1px solid rgba(212,175,55,.3)",
                   }}
                 />
-
-                <p
-                  style={{
-                    color:
-                      "#22c55e",
-                    marginTop:
-                      "10px",
-                  }}
-                >
-                  ✓ Screenshot
-                  Selected
-                </p>
               </div>
             )}
-          </div>
 
-          <button
-            onClick={handleSubmit}
-            disabled={loading}
-            style={{
-              width: "100%",
-              padding: "18px",
-              border: "none",
-              borderRadius: "14px",
-              background:
-                "linear-gradient(135deg,#d4af37,#f5d76e)",
-              color: "#000",
-              fontWeight: "bold",
-              fontSize: "18px",
-              cursor: "pointer",
-              boxShadow:
-                "0 10px 30px rgba(212,175,55,.35)",
-            }}
-          >
-            {loading
-              ? "✓ Processing Payment..."
-              : "Submit Payment"}
-          </button>
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              style={{
+                width: "100%",
+                padding: "18px",
+                border: "none",
+                borderRadius: "16px",
+                background:
+                  loading
+                    ? "#22c55e"
+                    : "linear-gradient(135deg,#d4af37,#f5d76e)",
+                color: "#000",
+                fontWeight: "bold",
+                fontSize: "18px",
+                cursor: "pointer",
+              }}
+            >
+              {loading
+                ? "✓ Payment Submitted"
+                : "Submit Payment"}
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -310,7 +300,16 @@ function PaymentCompleteContent() {
 export default function PaymentCompletePage() {
   return (
     <Suspense
-      fallback={<div>Loading...</div>}
+      fallback={
+        <div
+          style={{
+            color: "#fff",
+            padding: "30px",
+          }}
+        >
+          Loading...
+        </div>
+      }
     >
       <PaymentCompleteContent />
     </Suspense>
