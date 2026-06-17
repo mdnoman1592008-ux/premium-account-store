@@ -1,109 +1,117 @@
-import Image from "next/image";
+```tsx
 import Link from "next/link";
 
-interface AppCardProps {
+type Props = {
   name: string;
-  slug: string;
-  description?: string;
-  price?: string;
-}
+};
 
 export default function AppCard({
   name,
-  slug,
-  description,
-  price,
-}: AppCardProps) {
+}: Props) {
   return (
-    <Link
-      href={`/store/${slug}`}
+    <div
       style={{
-        textDecoration: "none",
+        background:
+          "linear-gradient(145deg,#111,#181818)",
+        border:
+          "1px solid rgba(212,175,55,.15)",
+        borderRadius: "22px",
+        padding: "24px",
+        textAlign: "center",
+        color: "#fff",
+        transition: "0.3s",
+        boxShadow:
+          "0 10px 30px rgba(0,0,0,.3)",
       }}
     >
       <div
         style={{
-          background: "#111",
-          border: "1px solid rgba(212,175,55,.15)",
-          borderRadius: "20px",
-          padding: "20px",
-          cursor: "pointer",
-          transition: "all .3s ease",
-          boxShadow: "0 10px 30px rgba(0,0,0,.35)",
-          height: "100%",
+          width: "80px",
+          height: "80px",
+          margin: "0 auto 15px",
+          borderRadius: "50%",
+          background:
+            "linear-gradient(135deg,#d4af37,#f5d76e)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "#000",
+          fontWeight: "bold",
+          fontSize: "30px",
+          boxShadow:
+            "0 0 25px rgba(212,175,55,.4)",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "15px",
-          }}
-        >
-          <Image
-            src={`/apps/${slug}.png`}
-            alt={name}
-            width={90}
-            height={90}
-            style={{
-              borderRadius: "16px",
-              objectFit: "cover",
-            }}
-          />
-        </div>
+        {name.charAt(0)}
+      </div>
 
-        <h3
-          style={{
-            color: "#fff",
-            textAlign: "center",
-            marginBottom: "8px",
-          }}
-        >
-          {name}
-        </h3>
+      <h3
+        style={{
+          marginBottom: "10px",
+        }}
+      >
+        {name}
+      </h3>
 
-        <p
-          style={{
-            color: "#aaa",
-            fontSize: "14px",
-            textAlign: "center",
-            minHeight: "40px",
-          }}
-        >
-          {description || "Premium Subscription"}
-        </p>
+      <div
+        style={{
+          color: "#fbbf24",
+          marginBottom: "10px",
+        }}
+      >
+        ★★★★★
+      </div>
 
-        {price && (
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: "12px",
-              color: "#d4af37",
-              fontWeight: "bold",
-              fontSize: "18px",
-            }}
-          >
-            ৳ {price}
-          </div>
-        )}
+      <p
+        style={{
+          color: "#d4af37",
+          fontWeight: "bold",
+          fontSize: "18px",
+        }}
+      >
+        Starting From ৳299
+      </p>
 
+      <div
+        style={{
+          display: "inline-block",
+          marginTop: "8px",
+          marginBottom: "20px",
+          padding: "6px 12px",
+          borderRadius: "999px",
+          background:
+            "rgba(34,197,94,.15)",
+          color: "#22c55e",
+          fontSize: "14px",
+          fontWeight: "bold",
+        }}
+      >
+        ✓ In Stock
+      </div>
+
+      <Link
+        href={`/store/${name
+          .toLowerCase()
+          .replace(/\s+/g, "-")}`}
+      >
         <button
           style={{
             width: "100%",
-            marginTop: "15px",
-            padding: "12px",
+            padding: "14px",
             border: "none",
-            borderRadius: "12px",
+            borderRadius: "14px",
             background:
               "linear-gradient(135deg,#d4af37,#f5d76e)",
             color: "#000",
-            fontWeight: "700",
+            fontWeight: "bold",
             cursor: "pointer",
+            fontSize: "16px",
           }}
         >
-          View Plans
+          🔥 Buy Now
         </button>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
+```
