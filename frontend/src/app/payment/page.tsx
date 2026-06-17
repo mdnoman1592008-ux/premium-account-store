@@ -1,28 +1,25 @@
-import PaymentForm from
-"../../components/PaymentForm";
+import PaymentForm from "../../components/PaymentForm";
 
 export default function PaymentPage() {
-
   return (
     <div
       style={{
-        padding:"50px"
+        minHeight: "100vh",
+        background:
+          "linear-gradient(to bottom,#050505,#0d0d0d)",
+        padding: "40px 20px",
       }}
     >
-
-      <h1>
-        Complete Payment
-      </h1>
-
-      <div
-        style={{
-          marginTop:"30px",
-          maxWidth:"600px"
-        }}
-      >
-        <PaymentForm />
-      </div>
-
+      <PaymentForm
+        orderId={
+          "ORD-" +
+          Date.now()
+            .toString()
+            .slice(-8)
+        }
+        amount="799"
+        paymentMethod="Nagad"
+      />
     </div>
   );
 }
